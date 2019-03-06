@@ -35,10 +35,13 @@ type
     procedure ListboxSizeClick(Sender: TObject);
     procedure ListboxStyleClick(Sender: TObject);
   private
+    FPreviewText: string;
     function GetFont: TFont;
+    procedure SetPreviewText(AValue: string);
     procedure UpdatePreview;
   public
     property Font: TFont read GetFont;
+    property PreviewText: string read FPreviewText write SetPreviewText;
   end;
 
 var
@@ -54,11 +57,13 @@ procedure TfrmFont.FormCreate(Sender: TObject);
 var
   i: integer;
 begin
-  Font.Name:= 'Courier';
-  Font.Style:= [];
-  Font.Size:= 9;
+  FPreviewText:= 'abcdefghijk ABCDEFGHIJK';
+  PanelPreviewText.Caption:= FPreviewText;
 
   ListboxFamily.Items.Assign(Screen.Fonts);
+
+  Constraints.MinWidth:= 300;
+  Constraints.MinHeight:= 200;
 
   with ListboxStyle do
   begin
@@ -137,6 +142,13 @@ end;
 function TfrmFont.GetFont: TFont;
 begin
   Result:= PanelPreviewText.Font;
+end;
+
+procedure TfrmFont.SetPreviewText(AValue: string);
+begin
+  if FPreviewText=AValue then Exit;
+  FPreviewText:= AValue;
+  PanelPreviewText.Caption:= AValue;
 end;
 
 procedure TfrmFont.UpdatePreview;

@@ -2,11 +2,11 @@ object frmFont: TfrmFont
   Left = 1822
   Height = 380
   Top = 436
-  Width = 550
-  BorderStyle = bsDialog
+  Width = 482
+  BorderIcons = [biSystemMenu]
   Caption = 'Font'
   ClientHeight = 380
-  ClientWidth = 550
+  ClientWidth = 482
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poScreenCenter
@@ -15,7 +15,7 @@ object frmFont: TfrmFont
     Left = 6
     Height = 29
     Top = 345
-    Width = 538
+    Width = 470
     OKButton.Name = 'OKButton'
     OKButton.DefaultCaption = True
     HelpButton.Name = 'HelpButton'
@@ -32,11 +32,11 @@ object frmFont: TfrmFont
     Left = 0
     Height = 75
     Top = 264
-    Width = 550
+    Width = 482
     Align = alBottom
     BevelOuter = bvNone
     ClientHeight = 75
-    ClientWidth = 550
+    ClientWidth = 482
     TabOrder = 1
     object LabelPreview: TLabel
       AnchorSideLeft.Control = PanelPreview
@@ -60,13 +60,13 @@ object frmFont: TfrmFont
       Left = 6
       Height = 40
       Top = 29
-      Width = 538
+      Width = 470
       Anchors = [akTop, akLeft, akRight, akBottom]
       BorderSpacing.Right = 6
       BorderSpacing.Bottom = 6
       BevelOuter = bvNone
       BorderStyle = bsSingle
-      Caption = 'abcdefghijk ABCDEFGHIJK'
+      Caption = '???'
       Color = clWindow
       ParentColor = False
       TabOrder = 0
@@ -76,14 +76,14 @@ object frmFont: TfrmFont
     Left = 0
     Height = 264
     Top = 0
-    Width = 550
+    Width = 482
     Align = alClient
     BevelOuter = bvNone
     ClientHeight = 264
-    ClientWidth = 550
+    ClientWidth = 482
     TabOrder = 0
     object PanelSize: TPanel
-      Left = 480
+      Left = 412
       Height = 264
       Top = 0
       Width = 70
@@ -143,14 +143,14 @@ object frmFont: TfrmFont
       end
     end
     object PanelStyle: TPanel
-      Left = 304
+      Left = 268
       Height = 264
       Top = 0
-      Width = 176
+      Width = 144
       Align = alRight
       BevelOuter = bvNone
       ClientHeight = 264
-      ClientWidth = 176
+      ClientWidth = 144
       TabOrder = 1
       object LabelStyle: TLabel
         AnchorSideLeft.Control = PanelStyle
@@ -174,11 +174,11 @@ object frmFont: TfrmFont
         Left = 0
         Height = 235
         Top = 29
-        Width = 176
+        Width = 144
         Anchors = [akTop, akLeft, akRight, akBottom]
         ItemHeight = 0
         OnClick = ListboxStyleClick
-        ScrollWidth = 174
+        ScrollWidth = 142
         TabOrder = 0
         TopIndex = -1
       end
@@ -187,11 +187,11 @@ object frmFont: TfrmFont
       Left = 0
       Height = 264
       Top = 0
-      Width = 304
+      Width = 268
       Align = alClient
       BevelOuter = bvNone
       ClientHeight = 264
-      ClientWidth = 304
+      ClientWidth = 268
       TabOrder = 0
       object LabelFamily: TLabel
         AnchorSideLeft.Control = PanelFamily
@@ -215,13 +215,13 @@ object frmFont: TfrmFont
         Left = 6
         Height = 235
         Top = 29
-        Width = 292
+        Width = 256
         Anchors = [akTop, akLeft, akRight, akBottom]
         BorderSpacing.Left = 6
         BorderSpacing.Right = 6
         ItemHeight = 0
         OnClick = ListboxFamilyClick
-        ScrollWidth = 290
+        ScrollWidth = 254
         TabOrder = 0
         TopIndex = -1
       end
