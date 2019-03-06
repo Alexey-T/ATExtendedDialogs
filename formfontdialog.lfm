@@ -30,12 +30,12 @@ object frmFont: TfrmFont
   end
   object PanelPreview: TPanel
     Left = 0
-    Height = 75
-    Top = 264
+    Height = 68
+    Top = 271
     Width = 482
     Align = alBottom
     BevelOuter = bvNone
-    ClientHeight = 75
+    ClientHeight = 68
     ClientWidth = 482
     TabOrder = 1
     object LabelPreview: TLabel
@@ -58,7 +58,7 @@ object frmFont: TfrmFont
       AnchorSideBottom.Control = PanelPreview
       AnchorSideBottom.Side = asrBottom
       Left = 6
-      Height = 40
+      Height = 33
       Top = 29
       Width = 470
       Anchors = [akTop, akLeft, akRight, akBottom]
@@ -74,23 +74,23 @@ object frmFont: TfrmFont
   end
   object PanelMain: TPanel
     Left = 0
-    Height = 264
+    Height = 271
     Top = 0
     Width = 482
     Align = alClient
     BevelOuter = bvNone
-    ClientHeight = 264
+    ClientHeight = 271
     ClientWidth = 482
     TabOrder = 0
     object PanelSize: TPanel
-      Left = 412
-      Height = 264
+      Left = 424
+      Height = 271
       Top = 0
-      Width = 70
+      Width = 58
       Align = alRight
       BevelOuter = bvNone
-      ClientHeight = 264
-      ClientWidth = 70
+      ClientHeight = 271
+      ClientWidth = 58
       TabOrder = 2
       object LabelSize: TLabel
         AnchorSideLeft.Control = PanelSize
@@ -112,7 +112,7 @@ object frmFont: TfrmFont
         Left = 6
         Height = 27
         Top = 29
-        Width = 58
+        Width = 46
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Left = 6
         BorderSpacing.Right = 6
@@ -128,28 +128,28 @@ object frmFont: TfrmFont
         AnchorSideBottom.Control = PanelSize
         AnchorSideBottom.Side = asrBottom
         Left = 6
-        Height = 202
+        Height = 209
         Top = 62
-        Width = 58
+        Width = 46
         Anchors = [akTop, akLeft, akRight, akBottom]
         BorderSpacing.Left = 6
         BorderSpacing.Top = 6
         BorderSpacing.Right = 6
         ItemHeight = 0
         OnClick = ListboxSizeClick
-        ScrollWidth = 56
+        ScrollWidth = 44
         TabOrder = 1
         TopIndex = -1
       end
     end
     object PanelStyle: TPanel
-      Left = 268
-      Height = 264
+      Left = 280
+      Height = 271
       Top = 0
       Width = 144
       Align = alRight
       BevelOuter = bvNone
-      ClientHeight = 264
+      ClientHeight = 271
       ClientWidth = 144
       TabOrder = 1
       object LabelStyle: TLabel
@@ -172,7 +172,7 @@ object frmFont: TfrmFont
         AnchorSideBottom.Control = PanelStyle
         AnchorSideBottom.Side = asrBottom
         Left = 0
-        Height = 235
+        Height = 242
         Top = 29
         Width = 144
         Anchors = [akTop, akLeft, akRight, akBottom]
@@ -185,13 +185,13 @@ object frmFont: TfrmFont
     end
     object PanelFamily: TPanel
       Left = 0
-      Height = 264
+      Height = 271
       Top = 0
-      Width = 268
+      Width = 280
       Align = alClient
       BevelOuter = bvNone
-      ClientHeight = 264
-      ClientWidth = 268
+      ClientHeight = 271
+      ClientWidth = 280
       TabOrder = 0
       object LabelFamily: TLabel
         AnchorSideLeft.Control = PanelFamily
@@ -213,15 +213,15 @@ object frmFont: TfrmFont
         AnchorSideBottom.Control = PanelFamily
         AnchorSideBottom.Side = asrBottom
         Left = 6
-        Height = 235
+        Height = 242
         Top = 29
-        Width = 256
+        Width = 268
         Anchors = [akTop, akLeft, akRight, akBottom]
         BorderSpacing.Left = 6
         BorderSpacing.Right = 6
         ItemHeight = 0
         OnClick = ListboxFamilyClick
-        ScrollWidth = 254
+        ScrollWidth = 266
         TabOrder = 0
         TopIndex = -1
       end

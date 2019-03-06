@@ -36,6 +36,8 @@ type
     procedure ListboxStyleClick(Sender: TObject);
   private
     FPreviewText: string;
+    FPreviewInitialHeight: integer;
+    FInitialHeight: integer;
     function GetFont: TFont;
     procedure SetPreviewText(const AValue: string);
     procedure UpdatePreview;
@@ -64,6 +66,9 @@ begin
 
   Constraints.MinWidth:= 300;
   Constraints.MinHeight:= 200;
+
+  FInitialHeight:= Height;
+  FPreviewInitialHeight:= PanelPreviewText.Height;
 
   with ListboxStyle do
   begin
@@ -185,7 +190,17 @@ begin
   begin
     N:= Max(cMinFontSize, Min(cMaxFontSize, N));
     Font.Size:= N;
+
+    PanelPreviewText.Canvas.Font.Assign(PanelPreviewText.Font);
+    PanelPreview.Height:=
+      Max(FPreviewInitialHeight, PanelPreviewText.Canvas.TextHeight(PanelPreviewText.Caption))
+      + LabelPreview.Height
+      + 6*3;
   end;
+
+  Height:= FInitialHeight+(PanelPreviewText.Height-FPreviewInitialHeight);
+
+  BtnPanel.Top:= Height; // fix layout
 end;
 
 

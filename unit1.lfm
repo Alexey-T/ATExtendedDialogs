@@ -13,7 +13,7 @@ object Form1: TForm1
     Height = 25
     Top = 75
     Width = 140
-    Caption = 'Font dialog - OS'
+    Caption = 'usual FontDialog'
     OnClick = btnDlgOSClick
     TabOrder = 0
   end
@@ -22,7 +22,7 @@ object Form1: TForm1
     Height = 25
     Top = 48
     Width = 140
-    Caption = 'Font dialog - AT'
+    Caption = 'ATFontDialog'
     OnClick = btnDlgATClick
     TabOrder = 1
   end
