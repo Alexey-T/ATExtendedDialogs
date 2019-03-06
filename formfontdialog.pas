@@ -35,19 +35,23 @@ type
     procedure ListboxSizeClick(Sender: TObject);
     procedure ListboxStyleClick(Sender: TObject);
   private
+    FOptions: TFontDialogOptions;
     FPreviewInitialHeight: integer;
     FInitialHeight: integer;
     FMinFontSize: integer;
     FMaxFontSize: integer;
     function GetFont: TFont;
     function GetPreviewText: string;
+    procedure SetOptions(AValue: TFontDialogOptions);
     procedure SetPreviewText(const AValue: string);
+    procedure UpdateLayout;
     procedure UpdatePreview;
   public
     property Font: TFont read GetFont;
     property PreviewText: string read GetPreviewText write SetPreviewText;
     property MinFontSize: integer read FMinFontSize write FMinFontSize;
     property MaxFontSize: integer read FMaxFontSize write FMaxFontSize;
+    property Options: TFontDialogOptions read FOptions write SetOptions;
   end;
 
 var
@@ -170,6 +174,14 @@ begin
   Result:= PanelPreviewText.Caption;
 end;
 
+procedure TfrmFont.SetOptions(AValue: TFontDialogOptions);
+begin
+  if FOptions=AValue then Exit;
+  FOptions:=AValue;
+  UpdateLayout;
+  UpdatePreview;
+end;
+
 procedure TfrmFont.SetPreviewText(const AValue: string);
 begin
   if GetPreviewText=AValue then Exit;
@@ -210,6 +222,24 @@ begin
   BtnPanel.Top:= Height; // fix layout
 end;
 
+
+procedure TfrmFont.UpdateLayout;
+begin
+  PanelSize.Visible:= not (fdNoSizeSel in FOptions);
+  PanelStyle.Visible:= not (fdNoStyleSel in FOptions);
+  PanelFamily.Visible:= not (fdNoFaceSel in FOptions);
+
+  PanelStyle.Align:= alRight;
+  PanelSize.Align:= alRight;
+  if not PanelFamily.Visible then
+  begin
+    if PanelStyle.Visible then
+      PanelStyle.Align:= alClient
+    else
+    if PanelSize.Visible then
+      PanelSize.Align:= alClient;
+  end;
+end;
 
 end.
 

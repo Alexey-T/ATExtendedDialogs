@@ -46,6 +46,9 @@ begin
   f.Font.Name:= 'Arial';
   f.Font.Style:= [fsItalic];
   f.Font.Size:= 12;
+
+  //f.Options:= [fdNoFaceSel, fdNoStyleSel, fdNoSizeSel];
+
   f.ShowModal;
   f.Free;
 end;
