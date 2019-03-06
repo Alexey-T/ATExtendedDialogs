@@ -1,0 +1,230 @@
+object frmFont: TfrmFont
+  Left = 1822
+  Height = 380
+  Top = 436
+  Width = 550
+  BorderStyle = bsDialog
+  Caption = 'Font'
+  ClientHeight = 380
+  ClientWidth = 550
+  OnCreate = FormCreate
+  OnShow = FormShow
+  Position = poScreenCenter
+  LCLVersion = '2.1.0.0'
+  object BtnPanel: TButtonPanel
+    Left = 6
+    Height = 29
+    Top = 345
+    Width = 538
+    OKButton.Name = 'OKButton'
+    OKButton.DefaultCaption = True
+    HelpButton.Name = 'HelpButton'
+    HelpButton.DefaultCaption = True
+    CloseButton.Name = 'CloseButton'
+    CloseButton.DefaultCaption = True
+    CancelButton.Name = 'CancelButton'
+    CancelButton.DefaultCaption = True
+    TabOrder = 2
+    ShowButtons = [pbOK, pbCancel]
+    ShowBevel = False
+  end
+  object PanelPreview: TPanel
+    Left = 0
+    Height = 75
+    Top = 264
+    Width = 550
+    Align = alBottom
+    BevelOuter = bvNone
+    ClientHeight = 75
+    ClientWidth = 550
+    TabOrder = 1
+    object LabelPreview: TLabel
+      AnchorSideLeft.Control = PanelPreview
+      AnchorSideTop.Control = PanelPreview
+      Left = 6
+      Height = 17
+      Top = 6
+      Width = 57
+      BorderSpacing.Around = 6
+      Caption = 'Preview:'
+      ParentColor = False
+    end
+    object PanelPreviewText: TPanel
+      AnchorSideLeft.Control = LabelPreview
+      AnchorSideTop.Control = LabelPreview
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Control = PanelPreview
+      AnchorSideRight.Side = asrBottom
+      AnchorSideBottom.Control = PanelPreview
+      AnchorSideBottom.Side = asrBottom
+      Left = 6
+      Height = 40
+      Top = 29
+      Width = 538
+      Anchors = [akTop, akLeft, akRight, akBottom]
+      BorderSpacing.Right = 6
+      BorderSpacing.Bottom = 6
+      BevelOuter = bvNone
+      BorderStyle = bsSingle
+      Caption = 'abcdefghijk ABCDEFGHIJK'
+      Color = clWindow
+      ParentColor = False
+      TabOrder = 0
+    end
+  end
+  object PanelMain: TPanel
+    Left = 0
+    Height = 264
+    Top = 0
+    Width = 550
+    Align = alClient
+    BevelOuter = bvNone
+    ClientHeight = 264
+    ClientWidth = 550
+    TabOrder = 0
+    object PanelSize: TPanel
+      Left = 480
+      Height = 264
+      Top = 0
+      Width = 70
+      Align = alRight
+      BevelOuter = bvNone
+      ClientHeight = 264
+      ClientWidth = 70
+      TabOrder = 2
+      object LabelSize: TLabel
+        AnchorSideLeft.Control = PanelSize
+        AnchorSideTop.Control = PanelSize
+        Left = 6
+        Height = 17
+        Top = 6
+        Width = 31
+        BorderSpacing.Around = 6
+        Caption = 'Size:'
+        ParentColor = False
+      end
+      object EditSize: TEdit
+        AnchorSideLeft.Control = PanelSize
+        AnchorSideTop.Control = LabelSize
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = PanelSize
+        AnchorSideRight.Side = asrBottom
+        Left = 6
+        Height = 27
+        Top = 29
+        Width = 58
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Left = 6
+        BorderSpacing.Right = 6
+        OnChange = EditSizeChange
+        TabOrder = 0
+      end
+      object ListboxSize: TListBox
+        AnchorSideLeft.Control = PanelSize
+        AnchorSideTop.Control = EditSize
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = PanelSize
+        AnchorSideRight.Side = asrBottom
+        AnchorSideBottom.Control = PanelSize
+        AnchorSideBottom.Side = asrBottom
+        Left = 6
+        Height = 202
+        Top = 62
+        Width = 58
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        BorderSpacing.Left = 6
+        BorderSpacing.Top = 6
+        BorderSpacing.Right = 6
+        ItemHeight = 0
+        OnClick = ListboxSizeClick
+        ScrollWidth = 56
+        TabOrder = 1
+        TopIndex = -1
+      end
+    end
+    object PanelStyle: TPanel
+      Left = 304
+      Height = 264
+      Top = 0
+      Width = 176
+      Align = alRight
+      BevelOuter = bvNone
+      ClientHeight = 264
+      ClientWidth = 176
+      TabOrder = 1
+      object LabelStyle: TLabel
+        AnchorSideLeft.Control = PanelStyle
+        AnchorSideTop.Control = PanelStyle
+        Left = 6
+        Height = 17
+        Top = 6
+        Width = 37
+        BorderSpacing.Around = 6
+        Caption = 'Style:'
+        ParentColor = False
+      end
+      object ListboxStyle: TListBox
+        AnchorSideLeft.Control = PanelStyle
+        AnchorSideTop.Control = LabelStyle
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = PanelStyle
+        AnchorSideRight.Side = asrBottom
+        AnchorSideBottom.Control = PanelStyle
+        AnchorSideBottom.Side = asrBottom
+        Left = 0
+        Height = 235
+        Top = 29
+        Width = 176
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        ItemHeight = 0
+        OnClick = ListboxStyleClick
+        ScrollWidth = 174
+        TabOrder = 0
+        TopIndex = -1
+      end
+    end
+    object PanelFamily: TPanel
+      Left = 0
+      Height = 264
+      Top = 0
+      Width = 304
+      Align = alClient
+      BevelOuter = bvNone
+      ClientHeight = 264
+      ClientWidth = 304
+      TabOrder = 0
+      object LabelFamily: TLabel
+        AnchorSideLeft.Control = PanelFamily
+        AnchorSideTop.Control = PanelFamily
+        Left = 6
+        Height = 17
+        Top = 6
+        Width = 47
+        BorderSpacing.Around = 6
+        Caption = 'Family:'
+        ParentColor = False
+      end
+      object ListboxFamily: TListBox
+        AnchorSideLeft.Control = PanelFamily
+        AnchorSideTop.Control = LabelFamily
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = PanelFamily
+        AnchorSideRight.Side = asrBottom
+        AnchorSideBottom.Control = PanelFamily
+        AnchorSideBottom.Side = asrBottom
+        Left = 6
+        Height = 235
+        Top = 29
+        Width = 292
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        BorderSpacing.Left = 6
+        BorderSpacing.Right = 6
+        ItemHeight = 0
+        OnClick = ListboxFamilyClick
+        ScrollWidth = 290
+        TabOrder = 0
+        TopIndex = -1
+      end
+    end
+  end
+end

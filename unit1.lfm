@@ -1,0 +1,35 @@
+object Form1: TForm1
+  Left = 1642
+  Height = 240
+  Top = 204
+  Width = 320
+  Caption = 'ATFontDialog demo'
+  ClientHeight = 240
+  ClientWidth = 320
+  Position = poScreenCenter
+  LCLVersion = '2.1.0.0'
+  object btnDlgOS: TButton
+    Left = 68
+    Height = 25
+    Top = 75
+    Width = 140
+    Caption = 'Font dialog - OS'
+    OnClick = btnDlgOSClick
+    TabOrder = 0
+  end
+  object btnDlgAT: TButton
+    Left = 68
+    Height = 25
+    Top = 48
+    Width = 140
+    Caption = 'Font dialog - AT'
+    OnClick = btnDlgATClick
+    TabOrder = 1
+  end
+  object FontDialog1: TFontDialog
+    MinFontSize = 0
+    MaxFontSize = 0
+    Left = 250
+    Top = 34
+  end
+end
