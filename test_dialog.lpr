@@ -1,4 +1,4 @@
-program project1;
+program test_dialog;
 
 {$mode objfpc}{$H+}
 
