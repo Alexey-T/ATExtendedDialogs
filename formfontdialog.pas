@@ -35,15 +35,19 @@ type
     procedure ListboxSizeClick(Sender: TObject);
     procedure ListboxStyleClick(Sender: TObject);
   private
-    FPreviewText: string;
     FPreviewInitialHeight: integer;
     FInitialHeight: integer;
+    FMinFontSize: integer;
+    FMaxFontSize: integer;
     function GetFont: TFont;
+    function GetPreviewText: string;
     procedure SetPreviewText(const AValue: string);
     procedure UpdatePreview;
   public
     property Font: TFont read GetFont;
-    property PreviewText: string read FPreviewText write SetPreviewText;
+    property PreviewText: string read GetPreviewText write SetPreviewText;
+    property MinFontSize: integer read FMinFontSize write FMinFontSize;
+    property MaxFontSize: integer read FMaxFontSize write FMaxFontSize;
   end;
 
 var
@@ -59,8 +63,7 @@ procedure TfrmFont.FormCreate(Sender: TObject);
 var
   i: integer;
 begin
-  FPreviewText:= 'abcdefghijk ABCDEFGHIJK';
-  PanelPreviewText.Caption:= FPreviewText;
+  PanelPreviewText.Caption:= 'abcdefghijk ABCDEFGHIJK';
 
   ListboxFamily.Items.Assign(Screen.Fonts);
 
@@ -69,6 +72,9 @@ begin
 
   FInitialHeight:= Height;
   FPreviewInitialHeight:= PanelPreviewText.Height;
+
+  FMinFontSize:= 6;
+  FMaxFontSize:= 72;
 
   with ListboxStyle do
   begin
@@ -159,18 +165,19 @@ begin
   Result:= PanelPreviewText.Font;
 end;
 
+function TfrmFont.GetPreviewText: string;
+begin
+  Result:= PanelPreviewText.Caption;
+end;
+
 procedure TfrmFont.SetPreviewText(const AValue: string);
 begin
-  if FPreviewText=AValue then Exit;
-  FPreviewText:= AValue;
+  if GetPreviewText=AValue then Exit;
   PanelPreviewText.Caption:= AValue;
   UpdatePreview;
 end;
 
 procedure TfrmFont.UpdatePreview;
-const
-  cMinFontSize = 6;
-  cMaxFontSize = 72;
 var
   N: integer;
 begin
@@ -188,7 +195,7 @@ begin
   N:= StrToIntDef(EditSize.Text, -1);
   if N>0 then
   begin
-    N:= Max(cMinFontSize, Min(cMaxFontSize, N));
+    N:= Max(FMinFontSize, Min(FMaxFontSize, N));
     Font.Size:= N;
 
     PanelPreviewText.Canvas.Font.Assign(PanelPreviewText.Font);
