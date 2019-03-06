@@ -28,7 +28,7 @@ type
     PanelMain: TPanel;
     PanelPreviewText: TPanel;
     PanelPreview: TPanel;
-    procedure EditSizeChange(Sender: TObject);
+    procedure EditSizeKeyPress(Sender: TObject; var Key: char);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure ListboxFamilyClick(Sender: TObject);
@@ -37,7 +37,7 @@ type
   private
     FPreviewText: string;
     function GetFont: TFont;
-    procedure SetPreviewText(AValue: string);
+    procedure SetPreviewText(const AValue: string);
     procedure UpdatePreview;
   public
     property Font: TFont read GetFont;
@@ -94,9 +94,18 @@ begin
   end;
 end;
 
-procedure TfrmFont.EditSizeChange(Sender: TObject);
+procedure TfrmFont.EditSizeKeyPress(Sender: TObject; var Key: char);
 begin
-  UpdatePreview;
+  case Key of
+    #13:
+      begin
+        UpdatePreview;
+        Key:= #0;
+      end;
+    //disble letters
+    'a'..'z', 'A'..'Z':
+      Key:= #0;
+  end;
 end;
 
 procedure TfrmFont.FormShow(Sender: TObject);
@@ -131,6 +140,7 @@ begin
   if ListboxSize.ItemIndex>=0 then
   begin
     EditSize.Text:= ListboxSize.Items[ListboxSize.ItemIndex];
+    UpdatePreview;
   end;
 end;
 
@@ -144,11 +154,12 @@ begin
   Result:= PanelPreviewText.Font;
 end;
 
-procedure TfrmFont.SetPreviewText(AValue: string);
+procedure TfrmFont.SetPreviewText(const AValue: string);
 begin
   if FPreviewText=AValue then Exit;
   FPreviewText:= AValue;
   PanelPreviewText.Caption:= AValue;
+  UpdatePreview;
 end;
 
 procedure TfrmFont.UpdatePreview;

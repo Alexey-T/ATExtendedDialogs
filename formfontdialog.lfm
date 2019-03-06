@@ -116,7 +116,7 @@ object frmFont: TfrmFont
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Left = 6
         BorderSpacing.Right = 6
-        OnChange = EditSizeChange
+        OnKeyPress = EditSizeKeyPress
         TabOrder = 0
       end
       object ListboxSize: TListBox
