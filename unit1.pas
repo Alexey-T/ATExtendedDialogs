@@ -6,10 +6,9 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  FormFontDialog;
+  ATFontDialog;
 
 type
-
   { TForm1 }
 
   TForm1 = class(TForm)
