@@ -1,3 +1,8 @@
+(*
+This source code is dual licensed: MPL 2.0 and LGPL.
+Copyright (c) Alexey Torgashin
+*)
+
 unit FormFontDialog;
 
 {$mode objfpc}{$H+}
