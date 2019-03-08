@@ -1,11 +1,11 @@
 object FormDemo: TFormDemo
-  Left = 1697
-  Height = 282
+  Left = 1695
+  Height = 248
   Top = 206
-  Width = 558
-  Caption = 'Dialog demos'
-  ClientHeight = 282
-  ClientWidth = 558
+  Width = 502
+  Caption = 'Dialog demo'
+  ClientHeight = 248
+  ClientWidth = 502
   Position = poScreenCenter
   LCLVersion = '2.1.0.0'
   object btnATFontDialog: TButton
@@ -58,29 +58,29 @@ object FormDemo: TFormDemo
     TabOrder = 4
   end
   object chkFontLimitSize: TCheckBox
-    Left = 24
+    Left = 320
     Height = 24
-    Top = 136
+    Top = 41
     Width = 86
     Caption = 'limit size'
     Checked = True
     State = cbChecked
-    TabOrder = 5
+    TabOrder = 10
   end
   object edFontSizeMin: TSpinEdit
-    Left = 132
+    Left = 344
     Height = 27
-    Top = 133
-    Width = 60
-    TabOrder = 6
+    Top = 64
+    Width = 56
+    TabOrder = 11
     Value = 6
   end
   object edFontSizeMax: TSpinEdit
-    Left = 200
+    Left = 400
     Height = 27
-    Top = 133
-    Width = 64
-    TabOrder = 7
+    Top = 64
+    Width = 56
+    TabOrder = 12
     Value = 72
   end
   object chkSelectName: TCheckBox
@@ -91,7 +91,7 @@ object FormDemo: TFormDemo
     Caption = 'select name'
     Checked = True
     State = cbChecked
-    TabOrder = 8
+    TabOrder = 7
   end
   object chkSelectStyle: TCheckBox
     Left = 184
@@ -101,7 +101,7 @@ object FormDemo: TFormDemo
     Caption = 'select style'
     Checked = True
     State = cbChecked
-    TabOrder = 9
+    TabOrder = 8
   end
   object chkSelectSize: TCheckBox
     Left = 184
@@ -111,32 +111,32 @@ object FormDemo: TFormDemo
     Caption = 'select size'
     Checked = True
     State = cbChecked
-    TabOrder = 10
+    TabOrder = 9
   end
   object chkFontShowColor: TCheckBox
     Left = 24
     Height = 24
-    Top = 160
+    Top = 136
     Width = 125
     Caption = 'show colorbox'
     Checked = True
     State = cbChecked
-    TabOrder = 11
+    TabOrder = 5
   end
   object chkFontShowStylesEx: TCheckBox
     Left = 24
     Height = 24
-    Top = 184
+    Top = 160
     Width = 257
     Caption = 'show ex styles (crossed/underline)'
     Checked = True
     State = cbChecked
-    TabOrder = 12
+    TabOrder = 6
   end
   object FontDialog1: TFontDialog
     MinFontSize = 0
     MaxFontSize = 0
     Left = 360
-    Top = 168
+    Top = 152
   end
 end
