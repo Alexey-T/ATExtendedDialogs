@@ -11,7 +11,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ButtonPanel, ExtCtrls,
-  StdCtrls, Math;
+  StdCtrls, ColorBox, Math;
 
 type
 
@@ -19,7 +19,11 @@ type
 
   TfrmFont = class(TForm)
     BtnPanel: TButtonPanel;
+    chkCrossed: TCheckBox;
+    chkUnderline: TCheckBox;
+    Colorbox: TColorBox;
     EditSize: TEdit;
+    LabelEffects: TLabel;
     LabelFamily: TLabel;
     LabelStyle: TLabel;
     LabelSize: TLabel;
@@ -27,12 +31,16 @@ type
     ListboxStyle: TListBox;
     ListboxFamily: TListBox;
     ListboxSize: TListBox;
+    PanelEffects: TPanel;
     PanelSize: TPanel;
     PanelStyle: TPanel;
     PanelFamily: TPanel;
     PanelMain: TPanel;
     PanelPreviewText: TPanel;
     PanelPreview: TPanel;
+    procedure chkCrossedChange(Sender: TObject);
+    procedure chkUnderlineChange(Sender: TObject);
+    procedure ColorboxChange(Sender: TObject);
     procedure EditSizeKeyPress(Sender: TObject; var Key: char);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -147,6 +155,21 @@ begin
   end;
 end;
 
+procedure TfrmFont.ColorboxChange(Sender: TObject);
+begin
+  UpdatePreview;
+end;
+
+procedure TfrmFont.chkCrossedChange(Sender: TObject);
+begin
+  UpdatePreview;
+end;
+
+procedure TfrmFont.chkUnderlineChange(Sender: TObject);
+begin
+  UpdatePreview;
+end;
+
 procedure TfrmFont.FormShow(Sender: TObject);
 begin
   if FOptSizeLimited then
@@ -219,17 +242,25 @@ end;
 procedure TfrmFont.UpdatePreview;
 var
   N, NNewPanelHeight: integer;
+  Style: TFontStyles;
 begin
   if ListboxFamily.ItemIndex>=0 then
     OptFont.Name:= ListboxFamily.Items[ListboxFamily.ItemIndex];
 
   if ListboxStyle.ItemIndex>=0 then
     case ListboxStyle.ItemIndex of
-      0: OptFont.Style:= [];
-      1: OptFont.Style:= [fsItalic];
-      2: OptFont.Style:= [fsBold];
-      3: OptFont.Style:= [fsBold, fsItalic];
+      0: Style:= [];
+      1: Style:= [fsItalic];
+      2: Style:= [fsBold];
+      3: Style:= [fsBold, fsItalic];
     end;
+
+  if chkCrossed.Checked then
+    Include(Style, fsStrikeOut);
+  if chkUnderline.Checked then
+    Include(Style, fsUnderline);
+
+  OptFont.Style:= Style;
 
   N:= StrToIntDef(EditSize.Text, -1);
   if N>0 then
@@ -238,6 +269,8 @@ begin
       N:= Max(FOptSizeMin, Min(FOptSizeMax, N));
     OptFont.Size:= N;
   end;
+
+  OptFont.Color:= Colorbox.Selected;
 
   if FOptShowPreview then
   begin

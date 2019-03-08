@@ -1,11 +1,11 @@
 object frmFont: TfrmFont
   Left = 1822
-  Height = 380
+  Height = 443
   Top = 436
   Width = 482
   BorderIcons = [biSystemMenu]
   Caption = 'Font'
-  ClientHeight = 380
+  ClientHeight = 443
   ClientWidth = 482
   OnCreate = FormCreate
   OnShow = FormShow
@@ -14,7 +14,7 @@ object frmFont: TfrmFont
   object BtnPanel: TButtonPanel
     Left = 6
     Height = 29
-    Top = 345
+    Top = 408
     Width = 470
     OKButton.Name = 'OKButton'
     OKButton.DefaultCaption = True
@@ -24,14 +24,14 @@ object frmFont: TfrmFont
     CloseButton.DefaultCaption = True
     CancelButton.Name = 'CancelButton'
     CancelButton.DefaultCaption = True
-    TabOrder = 2
+    TabOrder = 3
     ShowButtons = [pbOK, pbCancel]
     ShowBevel = False
   end
   object PanelPreview: TPanel
     Left = 6
     Height = 68
-    Top = 271
+    Top = 334
     Width = 470
     Align = alBottom
     BorderSpacing.Left = 6
@@ -39,7 +39,7 @@ object frmFont: TfrmFont
     BevelOuter = bvNone
     ClientHeight = 68
     ClientWidth = 470
-    TabOrder = 1
+    TabOrder = 2
     object LabelPreview: TLabel
       AnchorSideLeft.Control = PanelPreview
       AnchorSideTop.Control = PanelPreview
@@ -76,24 +76,24 @@ object frmFont: TfrmFont
   end
   object PanelMain: TPanel
     Left = 0
-    Height = 271
+    Height = 272
     Top = 0
     Width = 482
     Align = alClient
     BevelOuter = bvNone
-    ClientHeight = 271
+    ClientHeight = 272
     ClientWidth = 482
     TabOrder = 0
     object PanelSize: TPanel
       Left = 418
-      Height = 271
+      Height = 272
       Top = 0
       Width = 58
       Align = alRight
       BorderSpacing.Left = 6
       BorderSpacing.Right = 6
       BevelOuter = bvNone
-      ClientHeight = 271
+      ClientHeight = 272
       ClientWidth = 58
       TabOrder = 2
       object LabelSize: TLabel
@@ -131,7 +131,7 @@ object frmFont: TfrmFont
         AnchorSideBottom.Control = PanelSize
         AnchorSideBottom.Side = asrBottom
         Left = 0
-        Height = 209
+        Height = 210
         Top = 62
         Width = 58
         Anchors = [akTop, akLeft, akRight, akBottom]
@@ -145,14 +145,14 @@ object frmFont: TfrmFont
     end
     object PanelStyle: TPanel
       Left = 268
-      Height = 271
+      Height = 272
       Top = 0
       Width = 144
       Align = alRight
       BorderSpacing.Left = 6
       BorderSpacing.Right = 6
       BevelOuter = bvNone
-      ClientHeight = 271
+      ClientHeight = 272
       ClientWidth = 144
       TabOrder = 1
       object LabelStyle: TLabel
@@ -176,7 +176,7 @@ object frmFont: TfrmFont
         AnchorSideBottom.Control = PanelStyle
         AnchorSideBottom.Side = asrBottom
         Left = 0
-        Height = 242
+        Height = 243
         Top = 29
         Width = 144
         Anchors = [akTop, akLeft, akRight, akBottom]
@@ -189,14 +189,14 @@ object frmFont: TfrmFont
     end
     object PanelFamily: TPanel
       Left = 6
-      Height = 271
+      Height = 272
       Top = 0
       Width = 256
       Align = alClient
       BorderSpacing.Left = 6
       BorderSpacing.Right = 6
       BevelOuter = bvNone
-      ClientHeight = 271
+      ClientHeight = 272
       ClientWidth = 256
       TabOrder = 0
       object LabelFamily: TLabel
@@ -220,7 +220,7 @@ object frmFont: TfrmFont
         AnchorSideBottom.Control = PanelFamily
         AnchorSideBottom.Side = asrBottom
         Left = 0
-        Height = 242
+        Height = 243
         Top = 29
         Width = 256
         Anchors = [akTop, akLeft, akRight, akBottom]
@@ -230,6 +230,70 @@ object frmFont: TfrmFont
         TabOrder = 0
         TopIndex = -1
       end
+    end
+  end
+  object PanelEffects: TPanel
+    Left = 0
+    Height = 62
+    Top = 272
+    Width = 482
+    Align = alBottom
+    BevelOuter = bvNone
+    ClientHeight = 62
+    ClientWidth = 482
+    TabOrder = 1
+    object LabelEffects: TLabel
+      AnchorSideLeft.Control = PanelEffects
+      AnchorSideTop.Control = PanelEffects
+      Left = 6
+      Height = 17
+      Top = 6
+      Width = 51
+      BorderSpacing.Around = 6
+      Caption = 'Effects:'
+      ParentColor = False
+    end
+    object Colorbox: TColorBox
+      AnchorSideLeft.Control = PanelEffects
+      AnchorSideTop.Control = LabelEffects
+      AnchorSideTop.Side = asrBottom
+      Left = 6
+      Height = 31
+      Top = 29
+      Width = 208
+      Style = [cbStandardColors, cbExtendedColors, cbPrettyNames]
+      BorderSpacing.Left = 6
+      ItemHeight = 0
+      OnChange = ColorboxChange
+      TabOrder = 0
+    end
+    object chkCrossed: TCheckBox
+      AnchorSideLeft.Control = Colorbox
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = Colorbox
+      AnchorSideTop.Side = asrCenter
+      Left = 220
+      Height = 24
+      Top = 32
+      Width = 81
+      BorderSpacing.Around = 6
+      Caption = 'Crossed'
+      OnChange = chkCrossedChange
+      TabOrder = 1
+    end
+    object chkUnderline: TCheckBox
+      AnchorSideLeft.Control = chkCrossed
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = Colorbox
+      AnchorSideTop.Side = asrCenter
+      Left = 307
+      Height = 24
+      Top = 32
+      Width = 100
+      BorderSpacing.Around = 6
+      Caption = 'Underlined'
+      OnChange = chkUnderlineChange
+      TabOrder = 2
     end
   end
 end
