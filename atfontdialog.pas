@@ -157,6 +157,7 @@ begin
   EditSize.Text:= IntToStr(Font.Size);
   ListboxSize.ItemIndex:= ListboxSize.Items.IndexOf(EditSize.Text);
 
+  UpdateLayout;
   UpdatePreview;
 end;
 
@@ -225,9 +226,9 @@ begin
     NNewPanelHeight:= Max(30, PanelPreviewText.Canvas.TextHeight(PanelPreviewText.Caption));
     Height:= Height + NNewPanelHeight - PanelPreviewText.Height;
     PanelPreview.Height:= NNewPanelHeight + LabelPreview.Height + 6*3;
-  end;
 
-  BtnPanel.Top:= Height; // fix relative pos of BtnPanel
+    BtnPanel.Top:= Height; // fix relative pos of BtnPanel
+  end;
 end;
 
 

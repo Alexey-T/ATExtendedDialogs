@@ -1,35 +1,92 @@
 object Form1: TForm1
-  Left = 1642
-  Height = 240
-  Top = 204
-  Width = 320
-  Caption = 'ATFontDialog demo'
-  ClientHeight = 240
-  ClientWidth = 320
+  Left = 1695
+  Height = 282
+  Top = 206
+  Width = 457
+  Caption = 'Dialog demos'
+  ClientHeight = 282
+  ClientWidth = 457
   Position = poScreenCenter
   LCLVersion = '2.1.0.0'
-  object btnDlgOS: TButton
-    Left = 68
+  object btnATFontDialog: TButton
+    Left = 24
     Height = 25
-    Top = 75
-    Width = 140
-    Caption = 'usual FontDialog'
-    OnClick = btnDlgOSClick
-    TabOrder = 0
-  end
-  object btnDlgAT: TButton
-    Left = 68
-    Height = 25
-    Top = 48
+    Top = 8
     Width = 140
     Caption = 'ATFontDialog'
-    OnClick = btnDlgATClick
+    OnClick = btnATFontDialogClick
+    TabOrder = 0
+  end
+  object chkFontShowNames: TCheckBox
+    Left = 24
+    Height = 24
+    Top = 41
+    Width = 108
+    Caption = 'show names'
+    Checked = True
+    State = cbChecked
     TabOrder = 1
+  end
+  object chkFontShowStyles: TCheckBox
+    Left = 24
+    Height = 24
+    Top = 64
+    Width = 103
+    Caption = 'show styles'
+    Checked = True
+    State = cbChecked
+    TabOrder = 2
+  end
+  object chkFontShowSizes: TCheckBox
+    Left = 24
+    Height = 24
+    Top = 88
+    Width = 97
+    Caption = 'show sizes'
+    Checked = True
+    State = cbChecked
+    TabOrder = 3
+  end
+  object chkFontShowPreview: TCheckBox
+    Left = 24
+    Height = 24
+    Top = 112
+    Width = 117
+    Caption = 'show preview'
+    Checked = True
+    State = cbChecked
+    TabOrder = 4
+  end
+  object chkFontLimitSize: TCheckBox
+    Left = 24
+    Height = 24
+    Top = 136
+    Width = 86
+    Caption = 'limit size'
+    Checked = True
+    State = cbChecked
+    TabOrder = 5
+  end
+  object edFontSizeMin: TSpinEdit
+    Left = 132
+    Height = 27
+    Top = 133
+    Width = 60
+    TabOrder = 6
+    Value = 6
+  end
+  object edFontSizeMax: TSpinEdit
+    Left = 200
+    Height = 27
+    Top = 133
+    Width = 64
+    TabOrder = 7
+    Value = 72
   end
   object FontDialog1: TFontDialog
     MinFontSize = 0
     MaxFontSize = 0
-    Left = 250
-    Top = 34
+    Left = 312
+    Top = 24
   end
 end
