@@ -50,7 +50,9 @@ type
   private
     FPreviewInitialHeight: integer;
     FOptShowNames: boolean;
+    FOptShowColor: boolean;
     FOptShowStyles: boolean;
+    FOptShowStylesEx: boolean;
     FOptShowSizes: boolean;
     FOptShowPreview: boolean;
     FOptSelectName: boolean;
@@ -71,7 +73,9 @@ type
     property OptSizeMax: integer read FOptSizeMax write FOptSizeMax;
     property OptSizeLimited: boolean read FOptSizeLimited write FOptSizeLimited;
     property OptShowNames: boolean read FOptShowNames write FOptShowNames;
+    property OptShowColor: boolean read FOptShowColor write FOptShowColor;
     property OptShowStyles: boolean read FOptShowStyles write FOptShowStyles;
+    property OptShowStylesEx: boolean read FOptShowStylesEx write FOptShowStylesEx;
     property OptShowSizes: boolean read FOptShowSizes write FOptShowSizes;
     property OptShowPreview: boolean read FOptShowPreview write FOptShowPreview;
     property OptSelectName: boolean read FOptSelectName write FOptSelectName;
@@ -105,7 +109,9 @@ begin
   FOptSizeMax:= 72;
   FOptSizeLimited:= true;
   FOptShowNames:= true;
+  FOptShowColor:= true;
   FOptShowStyles:= true;
+  FOptShowStylesEx:= true;
   FOptShowSizes:= true;
   FOptShowPreview:= true;
   FOptSelectName:= true;
@@ -290,6 +296,11 @@ begin
   PanelStyle.Visible:= FOptShowStyles;
   PanelFamily.Visible:= FOptShowNames;
   PanelPreview.Visible:= FOptShowPreview;
+
+  PanelEffects.Visible:= FOptShowColor or FOptShowStylesEx;
+  chkCrossed.Visible:= FOptShowStylesEx;
+  chkUnderline.Visible:= FOptShowStylesEx;
+  Colorbox.Visible:= FOptShowColor;
 
   PanelStyle.Align:= alRight;
   PanelSize.Align:= alRight;

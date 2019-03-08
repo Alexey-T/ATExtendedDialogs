@@ -17,7 +17,7 @@ begin
   Application.Title:='ATFontDialog';
   Application.Scaled:=True;
   Application.Initialize;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TFormDemo, FormDemo);
   Application.CreateForm(TfrmFont, frmFont);
   Application.Run;
 end.

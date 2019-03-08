@@ -9,9 +9,9 @@ uses
   ATFontDialog;
 
 type
-  { TForm1 }
+  { TFormDemo }
 
-  TForm1 = class(TForm)
+  TFormDemo = class(TForm)
     btnATFontDialog: TButton;
     chkSelectName: TCheckBox;
     chkSelectStyle: TCheckBox;
@@ -32,15 +32,15 @@ type
   end;
 
 var
-  Form1: TForm1;
+  FormDemo: TFormDemo;
 
 implementation
 
 {$R *.lfm}
 
-{ TForm1 }
+{ TFormDemo }
 
-procedure TForm1.btnATFontDialogClick(Sender: TObject);
+procedure TFormDemo.btnATFontDialogClick(Sender: TObject);
 var
   f: TfrmFont;
 begin
