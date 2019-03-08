@@ -83,6 +83,36 @@ object Form1: TForm1
     TabOrder = 7
     Value = 72
   end
+  object chkSelectName: TCheckBox
+    Left = 183
+    Height = 24
+    Top = 41
+    Width = 106
+    Caption = 'select name'
+    Checked = True
+    State = cbChecked
+    TabOrder = 8
+  end
+  object chkSelectStyle: TCheckBox
+    Left = 184
+    Height = 24
+    Top = 64
+    Width = 101
+    Caption = 'select style'
+    Checked = True
+    State = cbChecked
+    TabOrder = 9
+  end
+  object chkSelectSize: TCheckBox
+    Left = 184
+    Height = 24
+    Top = 88
+    Width = 95
+    Caption = 'select size'
+    Checked = True
+    State = cbChecked
+    TabOrder = 10
+  end
   object FontDialog1: TFontDialog
     MinFontSize = 0
     MaxFontSize = 0

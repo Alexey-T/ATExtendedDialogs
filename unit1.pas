@@ -13,6 +13,9 @@ type
 
   TForm1 = class(TForm)
     btnATFontDialog: TButton;
+    chkSelectName: TCheckBox;
+    chkSelectStyle: TCheckBox;
+    chkSelectSize: TCheckBox;
     chkFontShowNames: TCheckBox;
     chkFontShowStyles: TCheckBox;
     chkFontShowSizes: TCheckBox;
@@ -54,6 +57,9 @@ begin
   f.OptSizeLimited:= chkFontLimitSize.Checked;
   f.OptSizeMin:= edFontSizeMin.Value;
   f.OptSizeMax:= edFontSizeMax.Value;
+  f.OptSelectName:= chkSelectName.Checked;
+  f.OptSelectStyle:= chkSelectStyle.Checked;
+  f.OptSelectSize:= chkSelectSize.Checked;
 
   f.ShowModal;
   f.Free;

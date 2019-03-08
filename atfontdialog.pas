@@ -45,6 +45,9 @@ type
     FOptShowStyles: boolean;
     FOptShowSizes: boolean;
     FOptShowPreview: boolean;
+    FOptSelectName: boolean;
+    FOptSelectStyle: boolean;
+    FOptSelectSize: boolean;
     FOptSizeLimited: boolean;
     FOptSizeMin: integer;
     FOptSizeMax: integer;
@@ -63,6 +66,9 @@ type
     property OptShowStyles: boolean read FOptShowStyles write FOptShowStyles;
     property OptShowSizes: boolean read FOptShowSizes write FOptShowSizes;
     property OptShowPreview: boolean read FOptShowPreview write FOptShowPreview;
+    property OptSelectName: boolean read FOptSelectName write FOptSelectName;
+    property OptSelectStyle: boolean read FOptSelectStyle write FOptSelectStyle;
+    property OptSelectSize: boolean read FOptSelectSize write FOptSelectSize;
   end;
 
 var
@@ -94,6 +100,9 @@ begin
   FOptShowStyles:= true;
   FOptShowSizes:= true;
   FOptShowPreview:= true;
+  FOptSelectName:= true;
+  FOptSelectStyle:= true;
+  FOptSelectSize:= true;
 
   with ListboxStyle do
   begin
@@ -140,25 +149,32 @@ end;
 
 procedure TfrmFont.FormShow(Sender: TObject);
 begin
-  ListboxFamily.ItemIndex:= ListboxFamily.Items.IndexOf(Font.Name);
-
-  Font.Style:= Font.Style-[fsUnderline, fsStrikeOut];
-  if Font.Style=[fsItalic] then
-    ListboxStyle.ItemIndex:= 1
-  else
-  if Font.Style=[fsBold] then
-    ListboxStyle.ItemIndex:= 2
-  else
-  if Font.Style=[fsBold, fsItalic] then
-    ListboxStyle.ItemIndex:= 3
-  else
-    ListboxStyle.ItemIndex:= 0;
-
   if FOptSizeLimited then
     Font.Size:= Min(FOptSizeMax, Max(FOptSizeMin, Font.Size));
 
-  EditSize.Text:= IntToStr(Font.Size);
-  ListboxSize.ItemIndex:= ListboxSize.Items.IndexOf(EditSize.Text);
+  if FOptSelectName then
+    ListboxFamily.ItemIndex:= ListboxFamily.Items.IndexOf(Font.Name);
+
+  if FOptSelectStyle then
+  begin
+    Font.Style:= Font.Style-[fsUnderline, fsStrikeOut];
+    if Font.Style=[fsItalic] then
+      ListboxStyle.ItemIndex:= 1
+    else
+    if Font.Style=[fsBold] then
+      ListboxStyle.ItemIndex:= 2
+    else
+    if Font.Style=[fsBold, fsItalic] then
+      ListboxStyle.ItemIndex:= 3
+    else
+      ListboxStyle.ItemIndex:= 0;
+  end;
+
+  if FOptSelectSize then
+  begin
+    EditSize.Text:= IntToStr(Font.Size);
+    ListboxSize.ItemIndex:= ListboxSize.Items.IndexOf(EditSize.Text);
+  end;
 
   UpdateLayout;
   UpdatePreview;
