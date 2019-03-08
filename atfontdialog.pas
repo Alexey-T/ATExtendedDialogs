@@ -40,13 +40,15 @@ type
     procedure ListboxSizeClick(Sender: TObject);
     procedure ListboxStyleClick(Sender: TObject);
   private
-    FOptions: TFontDialogOptions;
+    FOptShowNames: boolean;
+    FOptShowStyles: boolean;
+    FOptShowSizes: boolean;
+    FOptShowPreview: boolean;
     FPreviewInitialHeight: integer;
     FMinFontSize: integer;
     FMaxFontSize: integer;
     function GetFont: TFont;
     function GetPreviewText: string;
-    procedure SetOptions(AValue: TFontDialogOptions);
     procedure SetPreviewText(const AValue: string);
     procedure UpdateLayout;
     procedure UpdatePreview;
@@ -55,7 +57,10 @@ type
     property PreviewText: string read GetPreviewText write SetPreviewText;
     property MinFontSize: integer read FMinFontSize write FMinFontSize;
     property MaxFontSize: integer read FMaxFontSize write FMaxFontSize;
-    property Options: TFontDialogOptions read FOptions write SetOptions;
+    property OptShowNames: boolean read FOptShowNames write FOptShowNames;
+    property OptShowStyles: boolean read FOptShowStyles write FOptShowStyles;
+    property OptShowSizes: boolean read FOptShowSizes write FOptShowSizes;
+    property OptShowPreview: boolean read FOptShowPreview write FOptShowPreview;
   end;
 
 var
@@ -82,6 +87,11 @@ begin
 
   FMinFontSize:= 6;
   FMaxFontSize:= 72;
+
+  FOptShowNames:= true;
+  FOptShowStyles:= true;
+  FOptShowSizes:= true;
+  FOptShowPreview:= true;
 
   with ListboxStyle do
   begin
@@ -177,14 +187,6 @@ begin
   Result:= PanelPreviewText.Caption;
 end;
 
-procedure TfrmFont.SetOptions(AValue: TFontDialogOptions);
-begin
-  if FOptions=AValue then Exit;
-  FOptions:=AValue;
-  UpdateLayout;
-  UpdatePreview;
-end;
-
 procedure TfrmFont.SetPreviewText(const AValue: string);
 begin
   if GetPreviewText=AValue then Exit;
@@ -208,7 +210,7 @@ begin
     end;
 
   N:= StrToIntDef(EditSize.Text, -1);
-  if N>0 then
+  if FOptShowPreview and (N>0) then
   begin
     Font.Size:= Max(FMinFontSize, Min(FMaxFontSize, N));
 
@@ -218,16 +220,16 @@ begin
     PanelPreview.Height:= NNewPanelHeight + LabelPreview.Height + 6*3;
   end;
 
-
-  BtnPanel.Top:= Height; // fix layout
+  BtnPanel.Top:= Height; // fix relative pos of BtnPanel
 end;
 
 
 procedure TfrmFont.UpdateLayout;
 begin
-  PanelSize.Visible:= not (fdNoSizeSel in FOptions);
-  PanelStyle.Visible:= not (fdNoStyleSel in FOptions);
-  PanelFamily.Visible:= not (fdNoFaceSel in FOptions);
+  PanelSize.Visible:= FOptShowSizes;
+  PanelStyle.Visible:= FOptShowStyles;
+  PanelFamily.Visible:= FOptShowNames;
+  PanelPreview.Visible:= FOptShowPreview;
 
   PanelStyle.Align:= alRight;
   PanelSize.Align:= alRight;
