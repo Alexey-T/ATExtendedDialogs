@@ -40,13 +40,14 @@ type
     procedure ListboxSizeClick(Sender: TObject);
     procedure ListboxStyleClick(Sender: TObject);
   private
+    FPreviewInitialHeight: integer;
     FOptShowNames: boolean;
     FOptShowStyles: boolean;
     FOptShowSizes: boolean;
     FOptShowPreview: boolean;
-    FPreviewInitialHeight: integer;
-    FMinFontSize: integer;
-    FMaxFontSize: integer;
+    FOptSizeLimited: boolean;
+    FOptSizeMin: integer;
+    FOptSizeMax: integer;
     function GetFont: TFont;
     function GetPreviewText: string;
     procedure SetPreviewText(const AValue: string);
@@ -55,8 +56,9 @@ type
   public
     property Font: TFont read GetFont;
     property PreviewText: string read GetPreviewText write SetPreviewText;
-    property MinFontSize: integer read FMinFontSize write FMinFontSize;
-    property MaxFontSize: integer read FMaxFontSize write FMaxFontSize;
+    property OptSizeMin: integer read FOptSizeMin write FOptSizeMin;
+    property OptSizeMax: integer read FOptSizeMax write FOptSizeMax;
+    property OptSizeLimited: boolean read FOptSizeLimited write FOptSizeLimited;
     property OptShowNames: boolean read FOptShowNames write FOptShowNames;
     property OptShowStyles: boolean read FOptShowStyles write FOptShowStyles;
     property OptShowSizes: boolean read FOptShowSizes write FOptShowSizes;
@@ -85,9 +87,9 @@ begin
 
   FPreviewInitialHeight:= PanelPreviewText.Height;
 
-  FMinFontSize:= 6;
-  FMaxFontSize:= 72;
-
+  FOptSizeMin:= 6;
+  FOptSizeMax:= 72;
+  FOptSizeLimited:= true;
   FOptShowNames:= true;
   FOptShowStyles:= true;
   FOptShowSizes:= true;
@@ -210,10 +212,15 @@ begin
     end;
 
   N:= StrToIntDef(EditSize.Text, -1);
-  if FOptShowPreview and (N>0) then
+  if N>0 then
   begin
-    Font.Size:= Max(FMinFontSize, Min(FMaxFontSize, N));
+    if FOptSizeLimited then
+      N:= Max(FOptSizeMin, Min(FOptSizeMax, N));
+    Font.Size:= N;
+  end;
 
+  if FOptShowPreview then
+  begin
     PanelPreviewText.Canvas.Font.Assign(PanelPreviewText.Font);
     NNewPanelHeight:= Max(30, PanelPreviewText.Canvas.TextHeight(PanelPreviewText.Caption));
     Height:= Height + NNewPanelHeight - PanelPreviewText.Height;
