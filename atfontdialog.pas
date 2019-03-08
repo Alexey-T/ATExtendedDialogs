@@ -154,6 +154,9 @@ begin
   else
     ListboxStyle.ItemIndex:= 0;
 
+  if FOptSizeLimited then
+    Font.Size:= Min(FOptSizeMax, Max(FOptSizeMin, Font.Size));
+
   EditSize.Text:= IntToStr(Font.Size);
   ListboxSize.ItemIndex:= ListboxSize.Items.IndexOf(EditSize.Text);
 
