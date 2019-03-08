@@ -51,14 +51,14 @@ type
     FOptSizeLimited: boolean;
     FOptSizeMin: integer;
     FOptSizeMax: integer;
-    function GetFont: TFont;
+    function GetOptFont: TFont;
     function GetPreviewText: string;
     procedure SetPreviewText(const AValue: string);
     procedure UpdateLayout;
     procedure UpdatePreview;
   public
-    property Font: TFont read GetFont;
-    property PreviewText: string read GetPreviewText write SetPreviewText;
+    property OptFont: TFont read GetOptFont;
+    property OptPreviewText: string read GetPreviewText write SetPreviewText;
     property OptSizeMin: integer read FOptSizeMin write FOptSizeMin;
     property OptSizeMax: integer read FOptSizeMax write FOptSizeMax;
     property OptSizeLimited: boolean read FOptSizeLimited write FOptSizeLimited;
@@ -150,21 +150,21 @@ end;
 procedure TfrmFont.FormShow(Sender: TObject);
 begin
   if FOptSizeLimited then
-    Font.Size:= Min(FOptSizeMax, Max(FOptSizeMin, Font.Size));
+    OptFont.Size:= Min(FOptSizeMax, Max(FOptSizeMin, OptFont.Size));
 
   if FOptSelectName then
-    ListboxFamily.ItemIndex:= ListboxFamily.Items.IndexOf(Font.Name);
+    ListboxFamily.ItemIndex:= ListboxFamily.Items.IndexOf(OptFont.Name);
 
   if FOptSelectStyle then
   begin
-    Font.Style:= Font.Style-[fsUnderline, fsStrikeOut];
-    if Font.Style=[fsItalic] then
+    OptFont.Style:= OptFont.Style-[fsUnderline, fsStrikeOut];
+    if OptFont.Style=[fsItalic] then
       ListboxStyle.ItemIndex:= 1
     else
-    if Font.Style=[fsBold] then
+    if OptFont.Style=[fsBold] then
       ListboxStyle.ItemIndex:= 2
     else
-    if Font.Style=[fsBold, fsItalic] then
+    if OptFont.Style=[fsBold, fsItalic] then
       ListboxStyle.ItemIndex:= 3
     else
       ListboxStyle.ItemIndex:= 0;
@@ -172,7 +172,7 @@ begin
 
   if FOptSelectSize then
   begin
-    EditSize.Text:= IntToStr(Font.Size);
+    EditSize.Text:= IntToStr(OptFont.Size);
     ListboxSize.ItemIndex:= ListboxSize.Items.IndexOf(EditSize.Text);
   end;
 
@@ -199,7 +199,7 @@ begin
   UpdatePreview;
 end;
 
-function TfrmFont.GetFont: TFont;
+function TfrmFont.GetOptFont: TFont;
 begin
   Result:= PanelPreviewText.Font;
 end;
@@ -221,14 +221,14 @@ var
   N, NNewPanelHeight: integer;
 begin
   if ListboxFamily.ItemIndex>=0 then
-    Font.Name:= ListboxFamily.Items[ListboxFamily.ItemIndex];
+    OptFont.Name:= ListboxFamily.Items[ListboxFamily.ItemIndex];
 
   if ListboxStyle.ItemIndex>=0 then
     case ListboxStyle.ItemIndex of
-      0: Font.Style:= [];
-      1: Font.Style:= [fsItalic];
-      2: Font.Style:= [fsBold];
-      3: Font.Style:= [fsBold, fsItalic];
+      0: OptFont.Style:= [];
+      1: OptFont.Style:= [fsItalic];
+      2: OptFont.Style:= [fsBold];
+      3: OptFont.Style:= [fsBold, fsItalic];
     end;
 
   N:= StrToIntDef(EditSize.Text, -1);
@@ -236,12 +236,12 @@ begin
   begin
     if FOptSizeLimited then
       N:= Max(FOptSizeMin, Min(FOptSizeMax, N));
-    Font.Size:= N;
+    OptFont.Size:= N;
   end;
 
   if FOptShowPreview then
   begin
-    PanelPreviewText.Canvas.Font.Assign(PanelPreviewText.Font);
+    PanelPreviewText.Canvas.Font.Assign(OptFont);
     NNewPanelHeight:= Max(30, PanelPreviewText.Canvas.TextHeight(PanelPreviewText.Caption));
     Height:= Height + NNewPanelHeight - PanelPreviewText.Height;
     PanelPreview.Height:= NNewPanelHeight + LabelPreview.Height + 6*3;

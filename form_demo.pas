@@ -1,4 +1,4 @@
-unit Unit1;
+unit form_demo;
 
 {$mode objfpc}{$H+}
 
@@ -46,9 +46,9 @@ var
 begin
   f:= TfrmFont.Create(nil);
 
-  f.Font.Name:= 'Arial';
-  f.Font.Style:= [fsItalic];
-  f.Font.Size:= 12;
+  f.OptFont.Name:= 'Arial';
+  f.OptFont.Style:= [fsItalic];
+  f.OptFont.Size:= 12;
 
   f.OptShowNames:= chkFontShowNames.Checked;
   f.OptShowStyles:= chkFontShowStyles.Checked;
