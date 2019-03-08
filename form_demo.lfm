@@ -1,11 +1,11 @@
 object FormDemo: TFormDemo
-  Left = 1695
+  Left = 1697
   Height = 282
   Top = 206
-  Width = 457
+  Width = 558
   Caption = 'Dialog demos'
   ClientHeight = 282
-  ClientWidth = 457
+  ClientWidth = 558
   Position = poScreenCenter
   LCLVersion = '2.1.0.0'
   object btnATFontDialog: TButton
@@ -113,10 +113,30 @@ object FormDemo: TFormDemo
     State = cbChecked
     TabOrder = 10
   end
+  object chkFontShowColor: TCheckBox
+    Left = 24
+    Height = 24
+    Top = 160
+    Width = 125
+    Caption = 'show colorbox'
+    Checked = True
+    State = cbChecked
+    TabOrder = 11
+  end
+  object chkFontShowStylesEx: TCheckBox
+    Left = 24
+    Height = 24
+    Top = 184
+    Width = 257
+    Caption = 'show ex styles (crossed/underline)'
+    Checked = True
+    State = cbChecked
+    TabOrder = 12
+  end
   object FontDialog1: TFontDialog
     MinFontSize = 0
     MaxFontSize = 0
-    Left = 312
-    Top = 24
+    Left = 360
+    Top = 168
   end
 end

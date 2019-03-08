@@ -58,6 +58,7 @@ type
     FOptSelectName: boolean;
     FOptSelectStyle: boolean;
     FOptSelectSize: boolean;
+    FOptSelectColor: boolean;
     FOptSizeLimited: boolean;
     FOptSizeMin: integer;
     FOptSizeMax: integer;
@@ -81,6 +82,7 @@ type
     property OptSelectName: boolean read FOptSelectName write FOptSelectName;
     property OptSelectStyle: boolean read FOptSelectStyle write FOptSelectStyle;
     property OptSelectSize: boolean read FOptSelectSize write FOptSelectSize;
+    property OptSelectColor: boolean read FOptSelectColor write FOptSelectColor;
   end;
 
 var
@@ -117,6 +119,7 @@ begin
   FOptSelectName:= true;
   FOptSelectStyle:= true;
   FOptSelectSize:= true;
+  FOptSelectColor:= true;
 
   with ListboxStyle do
   begin
@@ -177,6 +180,8 @@ begin
 end;
 
 procedure TfrmFont.FormShow(Sender: TObject);
+var
+  Style: TFontStyles;
 begin
   if FOptSizeLimited then
     OptFont.Size:= Min(FOptSizeMax, Max(FOptSizeMin, OptFont.Size));
@@ -186,23 +191,31 @@ begin
 
   if FOptSelectStyle then
   begin
-    OptFont.Style:= OptFont.Style-[fsUnderline, fsStrikeOut];
-    if OptFont.Style=[fsItalic] then
+    Style:= OptFont.Style-[fsUnderline, fsStrikeOut];
+    if Style=[fsItalic] then
       ListboxStyle.ItemIndex:= 1
     else
-    if OptFont.Style=[fsBold] then
+    if Style=[fsBold] then
       ListboxStyle.ItemIndex:= 2
     else
-    if OptFont.Style=[fsBold, fsItalic] then
+    if Style=[fsBold, fsItalic] then
       ListboxStyle.ItemIndex:= 3
     else
       ListboxStyle.ItemIndex:= 0;
+
+    chkCrossed.Checked:= fsStrikeOut in OptFont.Style;
+    chkUnderline.Checked:= fsUnderline in OptFont.Style;
   end;
 
   if FOptSelectSize then
   begin
     EditSize.Text:= IntToStr(OptFont.Size);
     ListboxSize.ItemIndex:= ListboxSize.Items.IndexOf(EditSize.Text);
+  end;
+
+  if FOptSelectColor then
+  begin
+    Colorbox.Selected:= OptFont.Color;
   end;
 
   UpdateLayout;

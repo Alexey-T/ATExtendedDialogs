@@ -13,6 +13,8 @@ type
 
   TFormDemo = class(TForm)
     btnATFontDialog: TButton;
+    chkFontShowColor: TCheckBox;
+    chkFontShowStylesEx: TCheckBox;
     chkSelectName: TCheckBox;
     chkSelectStyle: TCheckBox;
     chkSelectSize: TCheckBox;
@@ -49,9 +51,12 @@ begin
   f.OptFont.Name:= 'Arial';
   f.OptFont.Style:= [fsItalic];
   f.OptFont.Size:= 12;
+  f.OptFont.Color:= clNavy;
 
   f.OptShowNames:= chkFontShowNames.Checked;
+  f.OptShowColor:= chkFontShowColor.Checked;
   f.OptShowStyles:= chkFontShowStyles.Checked;
+  f.OptShowStylesEx:= chkFontShowStylesEx.Checked;
   f.OptShowSizes:= chkFontShowSizes.Checked;
   f.OptShowPreview:= chkFontShowPreview.Checked;
   f.OptSizeLimited:= chkFontLimitSize.Checked;
