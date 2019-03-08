@@ -24,12 +24,15 @@
       <FormatVersion Value="2"/>
       <Modes Count="0"/>
     </RunParams>
-    <RequiredPackages Count="1">
+    <RequiredPackages Count="2">
       <Item1>
-        <PackageName Value="LCL"/>
+        <PackageName Value="atextendeddialogs_package"/>
       </Item1>
+      <Item2>
+        <PackageName Value="LCL"/>
+      </Item2>
     </RequiredPackages>
-    <Units Count="3">
+    <Units Count="2">
       <Unit0>
         <Filename Value="test_dialog.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -41,14 +44,6 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit1>
-      <Unit2>
-        <Filename Value="formfontdialog.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="frmFont"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="Form"/>
-        <UnitName Value="FormFontDialog"/>
-      </Unit2>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

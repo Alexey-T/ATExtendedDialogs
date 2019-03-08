@@ -18,7 +18,6 @@ begin
   Application.Scaled:=True;
   Application.Initialize;
   Application.CreateForm(TFormDemo, FormDemo);
-  Application.CreateForm(TfrmFont, frmFont);
   Application.Run;
 end.
 
