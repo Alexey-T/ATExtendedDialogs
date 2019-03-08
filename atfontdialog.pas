@@ -42,7 +42,6 @@ type
   private
     FOptions: TFontDialogOptions;
     FPreviewInitialHeight: integer;
-    FInitialHeight: integer;
     FMinFontSize: integer;
     FMaxFontSize: integer;
     function GetFont: TFont;
@@ -79,7 +78,6 @@ begin
   Constraints.MinWidth:= 300;
   Constraints.MinHeight:= 200;
 
-  FInitialHeight:= Height;
   FPreviewInitialHeight:= PanelPreviewText.Height;
 
   FMinFontSize:= 6;
@@ -196,7 +194,7 @@ end;
 
 procedure TfrmFont.UpdatePreview;
 var
-  N: integer;
+  N, NNewPanelHeight: integer;
 begin
   if ListboxFamily.ItemIndex>=0 then
     Font.Name:= ListboxFamily.Items[ListboxFamily.ItemIndex];
@@ -212,17 +210,14 @@ begin
   N:= StrToIntDef(EditSize.Text, -1);
   if N>0 then
   begin
-    N:= Max(FMinFontSize, Min(FMaxFontSize, N));
-    Font.Size:= N;
+    Font.Size:= Max(FMinFontSize, Min(FMaxFontSize, N));
 
     PanelPreviewText.Canvas.Font.Assign(PanelPreviewText.Font);
-    PanelPreview.Height:=
-      Max(FPreviewInitialHeight, PanelPreviewText.Canvas.TextHeight(PanelPreviewText.Caption))
-      + LabelPreview.Height
-      + 6*3;
+    NNewPanelHeight:= Max(30, PanelPreviewText.Canvas.TextHeight(PanelPreviewText.Caption));
+    Height:= Height + NNewPanelHeight - PanelPreviewText.Height;
+    PanelPreview.Height:= NNewPanelHeight + LabelPreview.Height + 6*3;
   end;
 
-  Height:= FInitialHeight+(PanelPreviewText.Height-FPreviewInitialHeight);
 
   BtnPanel.Top:= Height; // fix layout
 end;
