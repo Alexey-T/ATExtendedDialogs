@@ -186,7 +186,7 @@ end;
 
 procedure TfrmFont.FormShow(Sender: TObject);
 const
-  cScroll = 4;
+  cScroll = 0;
 var
   Style: TFontStyles;
 begin
