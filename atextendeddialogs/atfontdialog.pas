@@ -23,7 +23,6 @@ type
     chkUnderline: TCheckBox;
     Colorbox: TColorBox;
     EditSize: TEdit;
-    LabelEffects: TLabel;
     LabelFamily: TLabel;
     LabelStyle: TLabel;
     LabelSize: TLabel;

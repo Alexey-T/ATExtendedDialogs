@@ -78,24 +78,24 @@ object frmFont: TfrmFont
   end
   object PanelMain: TPanel
     Left = 0
-    Height = 272
+    Height = 291
     Top = 0
     Width = 482
     Align = alClient
     BevelOuter = bvNone
-    ClientHeight = 272
+    ClientHeight = 291
     ClientWidth = 482
     TabOrder = 0
     object PanelSize: TPanel
       Left = 418
-      Height = 272
+      Height = 291
       Top = 0
       Width = 58
       Align = alRight
       BorderSpacing.Left = 6
       BorderSpacing.Right = 6
       BevelOuter = bvNone
-      ClientHeight = 272
+      ClientHeight = 291
       ClientWidth = 58
       TabOrder = 2
       object LabelSize: TLabel
@@ -133,7 +133,7 @@ object frmFont: TfrmFont
         AnchorSideBottom.Control = PanelSize
         AnchorSideBottom.Side = asrBottom
         Left = 0
-        Height = 210
+        Height = 229
         Top = 62
         Width = 58
         Anchors = [akTop, akLeft, akRight, akBottom]
@@ -147,14 +147,14 @@ object frmFont: TfrmFont
     end
     object PanelStyle: TPanel
       Left = 268
-      Height = 272
+      Height = 291
       Top = 0
       Width = 144
       Align = alRight
       BorderSpacing.Left = 6
       BorderSpacing.Right = 6
       BevelOuter = bvNone
-      ClientHeight = 272
+      ClientHeight = 291
       ClientWidth = 144
       TabOrder = 1
       object LabelStyle: TLabel
@@ -178,7 +178,7 @@ object frmFont: TfrmFont
         AnchorSideBottom.Control = PanelStyle
         AnchorSideBottom.Side = asrBottom
         Left = 0
-        Height = 243
+        Height = 262
         Top = 29
         Width = 144
         Anchors = [akTop, akLeft, akRight, akBottom]
@@ -191,14 +191,14 @@ object frmFont: TfrmFont
     end
     object PanelFamily: TPanel
       Left = 6
-      Height = 272
+      Height = 291
       Top = 0
       Width = 256
       Align = alClient
       BorderSpacing.Left = 6
       BorderSpacing.Right = 6
       BevelOuter = bvNone
-      ClientHeight = 272
+      ClientHeight = 291
       ClientWidth = 256
       TabOrder = 0
       object LabelFamily: TLabel
@@ -222,7 +222,7 @@ object frmFont: TfrmFont
         AnchorSideBottom.Control = PanelFamily
         AnchorSideBottom.Side = asrBottom
         Left = 0
-        Height = 243
+        Height = 262
         Top = 29
         Width = 256
         Anchors = [akTop, akLeft, akRight, akBottom]
@@ -236,35 +236,24 @@ object frmFont: TfrmFont
   end
   object PanelEffects: TPanel
     Left = 0
-    Height = 62
-    Top = 272
+    Height = 43
+    Top = 291
     Width = 482
     Align = alBottom
+    AutoSize = True
     BevelOuter = bvNone
-    ClientHeight = 62
+    ClientHeight = 43
     ClientWidth = 482
     TabOrder = 1
-    object LabelEffects: TLabel
+    object Colorbox: TColorBox
       AnchorSideLeft.Control = PanelEffects
       AnchorSideTop.Control = PanelEffects
       Left = 6
-      Height = 17
-      Top = 6
-      Width = 51
-      BorderSpacing.Around = 6
-      Caption = 'Effects:'
-      ParentColor = False
-    end
-    object Colorbox: TColorBox
-      AnchorSideLeft.Control = PanelEffects
-      AnchorSideTop.Control = LabelEffects
-      AnchorSideTop.Side = asrBottom
-      Left = 6
       Height = 31
-      Top = 29
+      Top = 6
       Width = 208
       Style = [cbStandardColors, cbExtendedColors, cbPrettyNames]
-      BorderSpacing.Left = 6
+      BorderSpacing.Around = 6
       ItemHeight = 0
       OnChange = ColorboxChange
       TabOrder = 0
@@ -276,7 +265,7 @@ object frmFont: TfrmFont
       AnchorSideTop.Side = asrCenter
       Left = 220
       Height = 24
-      Top = 32
+      Top = 9
       Width = 81
       BorderSpacing.Around = 6
       Caption = 'Crossed'
@@ -290,7 +279,7 @@ object frmFont: TfrmFont
       AnchorSideTop.Side = asrCenter
       Left = 307
       Height = 24
-      Top = 32
+      Top = 9
       Width = 100
       BorderSpacing.Around = 6
       Caption = 'Underlined'
