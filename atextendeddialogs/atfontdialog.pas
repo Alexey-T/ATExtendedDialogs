@@ -186,6 +186,8 @@ begin
 end;
 
 procedure TfrmFont.FormShow(Sender: TObject);
+const
+  cScroll = 4;
 var
   Style: TFontStyles;
 begin
@@ -193,7 +195,10 @@ begin
     OptFont.Size:= Min(FOptSizeMax, Max(FOptSizeMin, OptFont.Size));
 
   if FOptSelectName then
+  begin
     ListboxFamily.ItemIndex:= ListboxFamily.Items.IndexOf(OptFont.Name);
+    ListboxFamily.TopIndex:= Max(ListboxFamily.ItemIndex-cScroll, 0);
+  end;
 
   if FOptSelectStyle then
   begin
@@ -217,6 +222,7 @@ begin
   begin
     EditSize.Text:= IntToStr(OptFont.Size);
     ListboxSize.ItemIndex:= ListboxSize.Items.IndexOf(EditSize.Text);
+    ListboxSize.TopIndex:= Max(ListboxSize.ItemIndex-cScroll, 0);
   end;
 
   if FOptSelectColor then

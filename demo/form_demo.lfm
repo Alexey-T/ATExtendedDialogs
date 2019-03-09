@@ -1,10 +1,10 @@
 object FormDemo: TFormDemo
   Left = 1694
-  Height = 283
-  Top = 206
+  Height = 307
+  Top = 205
   Width = 502
   Caption = 'Dialog demo'
-  ClientHeight = 283
+  ClientHeight = 307
   ClientWidth = 502
   OnCreate = FormCreate
   Position = poScreenCenter
@@ -143,9 +143,12 @@ object FormDemo: TFormDemo
     TabOrder = 13
   end
   object LabelFont: TLabel
-    Left = 8
+    AnchorSideLeft.Control = Owner
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 0
     Height = 17
-    Top = 256
+    Top = 248
     Width = 44
     Caption = 'Font: ?'
     ParentColor = False
