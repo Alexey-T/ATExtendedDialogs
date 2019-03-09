@@ -1,11 +1,12 @@
 object FormDemo: TFormDemo
-  Left = 1695
-  Height = 248
+  Left = 1694
+  Height = 283
   Top = 206
   Width = 502
   Caption = 'Dialog demo'
-  ClientHeight = 248
+  ClientHeight = 283
   ClientWidth = 502
+  OnCreate = FormCreate
   Position = poScreenCenter
   LCLVersion = '2.1.0.0'
   object btnATFontDialog: TButton
@@ -133,10 +134,31 @@ object FormDemo: TFormDemo
     State = cbChecked
     TabOrder = 6
   end
+  object chkFontShowApply: TCheckBox
+    Left = 24
+    Height = 24
+    Top = 184
+    Width = 151
+    Caption = 'show apply-button'
+    TabOrder = 13
+  end
+  object LabelFont: TLabel
+    Left = 8
+    Height = 17
+    Top = 256
+    Width = 44
+    Caption = 'Font: ?'
+    ParentColor = False
+  end
   object FontDialog1: TFontDialog
     MinFontSize = 0
     MaxFontSize = 0
     Left = 360
     Top = 152
+  end
+  object ApplicationProperties1: TApplicationProperties
+    ShowButtonGlyphs = sbgNever
+    Left = 429
+    Top = 157
   end
 end

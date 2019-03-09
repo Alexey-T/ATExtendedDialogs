@@ -12,7 +12,9 @@ type
   { TFormDemo }
 
   TFormDemo = class(TForm)
+    ApplicationProperties1: TApplicationProperties;
     btnATFontDialog: TButton;
+    chkFontShowApply: TCheckBox;
     chkFontShowColor: TCheckBox;
     chkFontShowStylesEx: TCheckBox;
     chkSelectName: TCheckBox;
@@ -26,9 +28,12 @@ type
     FontDialog1: TFontDialog;
     edFontSizeMin: TSpinEdit;
     edFontSizeMax: TSpinEdit;
+    LabelFont: TLabel;
     procedure btnATFontDialogClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
-
+    procedure DoClickApply(Sender: TObject);
+    procedure UpdateStatus;
   public
 
   end;
@@ -47,11 +52,8 @@ var
   f: TfrmFont;
 begin
   f:= TfrmFont.Create(nil);
-
-  f.OptFont.Name:= 'Arial';
-  f.OptFont.Style:= [fsItalic];
-  f.OptFont.Size:= 12;
-  f.OptFont.Color:= clNavy;
+  f.OptFont.Assign(LabelFont.Font);
+  f.OnClickApply:= @DoClickApply;
 
   f.OptShowNames:= chkFontShowNames.Checked;
   f.OptShowColor:= chkFontShowColor.Checked;
@@ -59,6 +61,7 @@ begin
   f.OptShowStylesEx:= chkFontShowStylesEx.Checked;
   f.OptShowSizes:= chkFontShowSizes.Checked;
   f.OptShowPreview:= chkFontShowPreview.Checked;
+  f.OptShowApply:= chkFontShowApply.Checked;
   f.OptSizeLimited:= chkFontLimitSize.Checked;
   f.OptSizeMin:= edFontSizeMin.Value;
   f.OptSizeMax:= edFontSizeMax.Value;
@@ -66,8 +69,33 @@ begin
   f.OptSelectStyle:= chkSelectStyle.Checked;
   f.OptSelectSize:= chkSelectSize.Checked;
 
-  f.ShowModal;
+  if f.ShowModal=mrOk then
+  begin
+    LabelFont.Font.Assign(f.OptFont);
+    UpdateStatus;
+  end;
+
   f.Free;
+end;
+
+procedure TFormDemo.UpdateStatus;
+begin
+  LabelFont.Caption:= 'Font: '+LabelFont.Font.Name+', '+IntToStr(LabelFont.Font.Size);
+end;
+
+procedure TFormDemo.FormCreate(Sender: TObject);
+begin
+  LabelFont.Font.Name:= 'Arial';
+  LabelFont.Font.Style:= [fsItalic];
+  LabelFont.Font.Size:= 12;
+  LabelFont.Font.Color:= clNavy;
+
+  UpdateStatus;
+end;
+
+procedure TFormDemo.DoClickApply(Sender: TObject);
+begin
+  ShowMessage('Apply clicked');
 end;
 
 end.

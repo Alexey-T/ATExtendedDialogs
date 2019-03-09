@@ -44,6 +44,7 @@ type
     procedure EditSizeKeyPress(Sender: TObject; var Key: char);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure HelpButtonClick(Sender: TObject);
     procedure ListboxFamilyClick(Sender: TObject);
     procedure ListboxSizeClick(Sender: TObject);
     procedure ListboxStyleClick(Sender: TObject);
@@ -55,6 +56,7 @@ type
     FOptShowStylesEx: boolean;
     FOptShowSizes: boolean;
     FOptShowPreview: boolean;
+    FOptShowApply: boolean;
     FOptSelectName: boolean;
     FOptSelectStyle: boolean;
     FOptSelectSize: boolean;
@@ -62,6 +64,7 @@ type
     FOptSizeLimited: boolean;
     FOptSizeMin: integer;
     FOptSizeMax: integer;
+    FOnClickApply: TNotifyEvent;
     function GetOptFont: TFont;
     function GetPreviewText: string;
     procedure SetPreviewText(const AValue: string);
@@ -79,10 +82,12 @@ type
     property OptShowStylesEx: boolean read FOptShowStylesEx write FOptShowStylesEx;
     property OptShowSizes: boolean read FOptShowSizes write FOptShowSizes;
     property OptShowPreview: boolean read FOptShowPreview write FOptShowPreview;
+    property OptShowApply: boolean read FOptShowApply write FOptShowApply;
     property OptSelectName: boolean read FOptSelectName write FOptSelectName;
     property OptSelectStyle: boolean read FOptSelectStyle write FOptSelectStyle;
     property OptSelectSize: boolean read FOptSelectSize write FOptSelectSize;
     property OptSelectColor: boolean read FOptSelectColor write FOptSelectColor;
+    property OnClickApply: TNotifyEvent read FOnClickApply write FOnClickApply;
   end;
 
 var
@@ -116,6 +121,7 @@ begin
   FOptShowStylesEx:= true;
   FOptShowSizes:= true;
   FOptShowPreview:= true;
+  FOptShowApply:= true;
   FOptSelectName:= true;
   FOptSelectStyle:= true;
   FOptSelectSize:= true;
@@ -315,6 +321,9 @@ begin
   chkUnderline.Visible:= FOptShowStylesEx;
   Colorbox.Visible:= FOptShowColor;
 
+  if not FOptShowApply then
+    BtnPanel.ShowButtons:= BtnPanel.ShowButtons-[pbHelp];
+
   PanelStyle.Align:= alRight;
   PanelSize.Align:= alRight;
   if not PanelFamily.Visible then
@@ -326,6 +335,13 @@ begin
       PanelSize.Align:= alClient;
   end;
 end;
+
+procedure TfrmFont.HelpButtonClick(Sender: TObject);
+begin
+  if Assigned(FOnClickApply) then
+    FOnClickApply(Self);
+end;
+
 
 end.
 
