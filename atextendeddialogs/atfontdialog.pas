@@ -93,6 +93,9 @@ type
 var
   frmFont: TfrmFont;
 
+var
+  ATFontDialogFixedSizes: array of integer;
+
 implementation
 
 {$R *.lfm}
@@ -139,20 +142,8 @@ begin
   with ListboxSize do
   begin
     Items.Clear;
-    for i:= 6 to 18 do
+    for i in ATFontDialogFixedSizes do
       Items.Add(IntToStr(i));
-    Items.Add('20');
-    Items.Add('22');
-    Items.Add('24');
-    Items.Add('26');
-    Items.Add('28');
-    Items.Add('32');
-    Items.Add('36');
-    Items.Add('40');
-    Items.Add('48');
-    Items.Add('56');
-    Items.Add('64');
-    Items.Add('72');
   end;
 
   Caption:= ATFontDialogCaption;
@@ -359,6 +350,39 @@ begin
     FOnClickApply(Self);
 end;
 
+procedure InitFixedSizes;
+begin
+  ATFontDialogFixedSizes:= [
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    20,
+    22,
+    24,
+    26,
+    28,
+    32,
+    36,
+    40,
+    48,
+    56,
+    64,
+    72
+    ];
+end;
+
+initialization
+  InitFixedSizes;
 
 end.
 
