@@ -66,22 +66,22 @@ object FormDemo: TFormDemo
     Caption = 'limit size'
     Checked = True
     State = cbChecked
-    TabOrder = 10
+    TabOrder = 11
   end
   object edFontSizeMin: TSpinEdit
     Left = 344
     Height = 27
     Top = 64
     Width = 56
-    TabOrder = 11
+    TabOrder = 12
     Value = 6
   end
   object edFontSizeMax: TSpinEdit
-    Left = 400
+    Left = 408
     Height = 27
     Top = 64
     Width = 56
-    TabOrder = 12
+    TabOrder = 13
     Value = 72
   end
   object chkSelectName: TCheckBox
@@ -92,7 +92,7 @@ object FormDemo: TFormDemo
     Caption = 'select name'
     Checked = True
     State = cbChecked
-    TabOrder = 7
+    TabOrder = 8
   end
   object chkSelectStyle: TCheckBox
     Left = 184
@@ -102,7 +102,7 @@ object FormDemo: TFormDemo
     Caption = 'select style'
     Checked = True
     State = cbChecked
-    TabOrder = 8
+    TabOrder = 9
   end
   object chkSelectSize: TCheckBox
     Left = 184
@@ -112,7 +112,7 @@ object FormDemo: TFormDemo
     Caption = 'select size'
     Checked = True
     State = cbChecked
-    TabOrder = 9
+    TabOrder = 10
   end
   object chkFontShowColor: TCheckBox
     Left = 24
@@ -140,16 +140,17 @@ object FormDemo: TFormDemo
     Top = 184
     Width = 151
     Caption = 'show apply-button'
-    TabOrder = 13
+    TabOrder = 7
   end
   object LabelFont: TLabel
     AnchorSideLeft.Control = Owner
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 0
+    Left = 6
     Height = 17
     Top = 248
     Width = 44
+    BorderSpacing.Left = 6
     Caption = 'Font: ?'
     ParentColor = False
   end
