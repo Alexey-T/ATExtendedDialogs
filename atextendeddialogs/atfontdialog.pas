@@ -11,7 +11,8 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ButtonPanel, ExtCtrls,
-  StdCtrls, ColorBox, Math;
+  StdCtrls, ColorBox, Math,
+  ATExtendedDialogs_Str;
 
 type
 
@@ -129,10 +130,10 @@ begin
   with ListboxStyle do
   begin
     Items.Clear;
-    Items.Add('Regular');
-    Items.Add('Italic');
-    Items.Add('Bold');
-    Items.Add('Bold Italic');
+    Items.Add(ATFontDialogStyleRegular);
+    Items.Add(ATFontDialogStyleItalic);
+    Items.Add(ATFontDialogStyleBold);
+    Items.Add(ATFontDialogStyleBoldItalic);
   end;
 
   with ListboxSize do
@@ -153,6 +154,17 @@ begin
     Items.Add('64');
     Items.Add('72');
   end;
+
+  Caption:= ATFontDialogCaption;
+  BtnPanel.OKButton.Caption:= ATFontDialogOK;
+  BtnPanel.CancelButton.Caption:= ATFontDialogCancel;
+  BtnPanel.HelpButton.Caption:= ATFontDialogApply;
+  LabelFamily.Caption:= ATFontDialogFamily;
+  LabelStyle.Caption:= ATFontDialogStyle;
+  LabelSize.Caption:= ATFontDialogSize;
+  LabelPreview.Caption:= ATFontDialogPreview;
+  chkCrossed.Caption:= ATFontDialogCrossed;
+  chkUnderline.Caption:= ATFontDialogUnderlined;
 end;
 
 procedure TfrmFont.EditSizeKeyPress(Sender: TObject; var Key: char);
