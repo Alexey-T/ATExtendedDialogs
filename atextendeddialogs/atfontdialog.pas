@@ -163,8 +163,8 @@ begin
   LabelStyle.Caption:= ATFontDialogStyle;
   LabelSize.Caption:= ATFontDialogSize;
   LabelPreview.Caption:= ATFontDialogPreview;
-  chkCrossed.Caption:= ATFontDialogCrossed;
-  chkUnderline.Caption:= ATFontDialogUnderlined;
+  chkCrossed.Caption:= ATFontDialogStyleCrossed;
+  chkUnderline.Caption:= ATFontDialogStyleUnderlined;
 end;
 
 procedure TfrmFont.EditSizeKeyPress(Sender: TObject; var Key: char);

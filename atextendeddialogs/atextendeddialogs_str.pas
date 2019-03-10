@@ -16,12 +16,12 @@ resourcestring
   ATFontDialogFamily = 'Family:';
   ATFontDialogStyle = 'Style:';
   ATFontDialogSize = 'Size:';
-  ATFontDialogCrossed = 'Crossed';
-  ATFontDialogUnderlined = 'Underlined';
   ATFontDialogStyleRegular = 'Regular';
   ATFontDialogStyleItalic = 'Italic';
   ATFontDialogStyleBold = 'Bold';
   ATFontDialogStyleBoldItalic = 'Bold Italic';
+  ATFontDialogStyleCrossed = 'Crossed';
+  ATFontDialogStyleUnderlined = 'Underlined';
 
 implementation
 
