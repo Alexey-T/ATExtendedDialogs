@@ -351,34 +351,40 @@ begin
 end;
 
 procedure InitFixedSizes;
+  //
+  procedure Add(Value: integer); inline;
+  begin
+    SetLength(ATFontDialogFixedSizes, Length(ATFontDialogFixedSizes)+1);
+    ATFontDialogFixedSizes[Length(ATFontDialogFixedSizes)-1]:= Value;
+  end;
+  //
 begin
-  ATFontDialogFixedSizes:= [
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    17,
-    18,
-    20,
-    22,
-    24,
-    26,
-    28,
-    32,
-    36,
-    40,
-    48,
-    56,
-    64,
-    72
-    ];
+  SetLength(ATFontDialogFixedSizes, 0);
+  Add(6);
+  Add(7);
+  Add(8);
+  Add(9);
+  Add(10);
+  Add(11);
+  Add(12);
+  Add(13);
+  Add(14);
+  Add(15);
+  Add(16);
+  Add(17);
+  Add(18);
+  Add(20);
+  Add(22);
+  Add(24);
+  Add(26);
+  Add(28);
+  Add(32);
+  Add(36);
+  Add(40);
+  Add(48);
+  Add(56);
+  Add(64);
+  Add(72);
 end;
 
 initialization
